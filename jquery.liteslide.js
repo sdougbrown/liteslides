@@ -21,8 +21,9 @@
 			bullets: false,						// true or false to activate the bullet navigation
 			// custom classes for everything yayyyy!
 			// bullets and directional nav get some default classes anyway so these are optional
-			dirNavLCls: '',
-			dirNavRCls: '',	
+			dirNavCls: '',
+			dirNavClsL: '',
+			dirNavClsR: '',	
 			bulletWrpCls: '',
 			bulletCls: '',
 			bulletActiveCls: 'active',
@@ -135,9 +136,9 @@
                     stopClock();
                     shift("next")
                 });
-				// add extra classes if specified
-				$(leftBtn).addClass(options.dirNavLCls);
-				$(rightBtn).addClass(options.dirNavRCls);
+				// add extra classes if specified				
+				$(leftBtn).addClass(options.dirNavClsL).addClass(options.dirNavCls);
+				$(rightBtn).addClass(options.dirNavClsR).addClass(options.dirNavCls);
             }
 		
 			//Bullet Nav Setup
