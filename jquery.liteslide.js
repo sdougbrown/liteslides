@@ -8,24 +8,27 @@
 (function($) {
 	
     $.fn.liteslide = function(options) {
-		var defaults = {			
-			activeCls: 'active',
-			lastActiveCls: 'last-active',
-			timer: true,
-			children: 'img, a, div',			// default children - you can change to a different class
-			advanceOnClick: false,				// advance on a slide click
-			restartButton: false,				// generate a restart button?
+		var defaults = {
+			timer: true,						// we can do this the easy way or the hard way...
 			advanceSpeed: 5000, 				// time between transitions 
+			children: 'img, a, div',			// default slide children - you can change to whatever
+			advanceOnClick: false,				// advance on a slide click
+			restartButton: false,				// generate a restart button?			
             pauseOnHover: false, 				// if you hover pauses the slider
             startClockOnMouseOut: false, 		// if clock should start on MouseOut
             startClockOnMouseOutAfter: 1000, 	// how long after MouseOut should the timer start again           
-            dirNav: false, 						// manual advancing directional navs
-			dirNavLCls: '',						// extra class for left direction nav
-			dirNavRCls: '',						// extra class for right direction nav
+            dirNav: false, 						// manual advancing directional navs			
 			bullets: false,						// true or false to activate the bullet navigation
+			// custom classes for everything yayyyy!
+			// bullets and directional nav get some default classes anyway so these are optional
+			dirNavLCls: '',
+			dirNavRCls: '',	
 			bulletWrpCls: '',
 			bulletCls: '',
 			bulletActiveCls: 'active',
+			activeCls: 'active',
+			lastActiveCls: 'last-active',
+			// do stuff after a slide switch
             afterSlideChange: function(){} 		// empty function 
      	};  
         
@@ -120,7 +123,7 @@
 			//DirectionalNav { rightButton --> shift("next"), leftButton --> shift("prev");
             if(options.dirNav) {
             	if(options.directionalNav == "false") { return false; }
-                var dirNav = '<span class="slide-nav slide-nav--right">Right</span><span class="slide nav slide-nav--left">Left</span>';
+                var dirNav = '<span class="slide-nav slide-nav--dir slide-nav--right"><span class="hide">Right</span></span><span class="slide nav slide-nav--dir slide-nav--left"><span class="hide">Left</span></span>';
                 $(this).append(dirNav);
                 var leftBtn = $(this).children('.slide-nav--left'),
                 	rightBtn = $(this).children('.slide-nav--right');                
